@@ -3,7 +3,15 @@ from random import shuffle
 def find_num():
     # 죄수 번호가 들어갈 박스
     boxes = {}
-    #3
+
+    
+    # 죄수 번호(1~100)를 셔플.
+    nums = [i for i in range(1, 101)]
+    shuffle(nums)
+
+    # 앞 죄수가 열어본 박스
+    visited = set()
+#3
     # 각 죄수가 방에 들어가 자신의 번호가 매겨진 박스부터 열어본다.
     for prisoner in range(1, 101):
         # 만약 앞 죄수가 열어본 박스에 본인 번호가 있다면 열 필요가 없다. 
@@ -23,3 +31,9 @@ def find_num():
             # print('못 찾았다')
             return 0
     return 1
+
+#4
+success = 0
+for _ in range(10000):
+    success += find_num()
+print(success / 10000)
